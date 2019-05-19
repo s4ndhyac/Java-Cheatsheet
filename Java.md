@@ -1,21 +1,51 @@
 # Java-Cheatsheet
 The complete Java cheatsheet
 
+- Java: cross-platform memory model -> write once, run anywhere concurrent applications
+
 ## Data Structures and APIs
 ### Boxed
 - String
 - StringBuilder
 - StringBuffer
-- 
+- Queue
+- Stack
+- Deque
+- PriorityQueue
+- List
+- Iterator
+
 
 ### Unboxed
 
 
 ## Common Operations
 ### String Manipulation
+- substring:
+    - substring(int startIndex, int endIndex)
+    - substring(int startIndex) [To end]
+- split:
+
 
 ### On Arrays
+- Array of Lists -> 
+```
+List<Integer>[] r = new ArrayList<>();
+for(int i=0; i<10; i++)
+{
+  r[i] = new ArrayList<>();
+}
+```
+- BinarySearch
+int i = Arrays.binarySearch(arr, val);\\
+returns index
 
+- sort 
+Arrays.sort(arr, (a,b)-> a - b);
+Arrays.sort(arr, (a,b)-> b - a);
+
+- deep copy
+- Arrays.clone()
 
 
 ## Threading
@@ -45,5 +75,7 @@ The complete Java cheatsheet
 
 ## Head-First Design Patterns in Java [Notes]
 
-## Java Concurrency in Practice [Notes]
+
+## Java Interview Bootcamp
+- 
 
