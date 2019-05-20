@@ -8,6 +8,26 @@ The complete Java cheatsheet
 - String
 - StringBuilder
 - StringBuffer
+  - Constructor -> 
+    - new StringBuffer()
+    - new StringBuffer(int size)
+    - new StringBuffer(String s)
+  - methods -> StringBuffer s = new StringBuffer()
+    - s.length()
+    - s.capacity()
+    - s.append(String s)
+    - s.insert(int index, String str/char ch)
+    - s.reverse();
+    - s.delete(int startIndex, int endIndex)
+    - s.deleteCharAt(int index)
+    - s.replace(int startIndex, int endIndex, String str)
+    - s.ensureCapacity(int capacity) -> sets the new capacity to the input capacity or twice the current capacity whichever is larger
+    - s.charAt(int index)
+    - s.chars() -> returns stream of int zero-extending the char values from this sequence
+    - s.getChars(int startIndex, int endIndex, char[] dest, int destStartIndex) -> copy chars b/w startIndex and endIndex from this sequence to the destination character array from the destination startIndex.
+    - s.indexOf(String str) -> returns first occurence of startIndex of specified substring str within given sequence
+    - s.lastIndexOf(String str) -> returns last occurence of startIndex of specified substring str within given sequence
+    - 
 - Queue
 - Stack
 - Deque
