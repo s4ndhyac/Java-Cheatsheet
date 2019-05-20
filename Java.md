@@ -7,6 +7,13 @@ The complete Java cheatsheet
 
 ### Base Classes 
 - Object
+  - clone
+  - equals
+  - finalize
+  - getClass
+  - hashCode
+  - notify
+  - notifyAll
 
 ### Interfaces
 - Serializable
