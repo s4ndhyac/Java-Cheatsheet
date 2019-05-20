@@ -4,10 +4,22 @@ The complete Java cheatsheet
 - Java: cross-platform memory model -> write once, run anywhere concurrent applications
 
 ## Data Structures and APIs
+
+### Base Classes 
+- Object
+
+### Interfaces
+- Serializable
+  -
+- Appendable
+  - 
+- CharSequence
+  - 
+
 ### Boxed [Wrapper classes]
 - String
 - StringBuilder
-- StringBuffer
+- StringBuffer -> `final class StringBuffer extends Object implements Serializable, Appendable, CharSequence`
   - Constructor -> 
     - new StringBuffer()
     - new StringBuffer(int size)
@@ -27,7 +39,13 @@ The complete Java cheatsheet
     - s.getChars(int startIndex, int endIndex, char[] dest, int destStartIndex) -> copy chars b/w startIndex and endIndex from this sequence to the destination character array from the destination startIndex.
     - s.indexOf(String str) -> returns first occurence of startIndex of specified substring str within given sequence
     - s.lastIndexOf(String str) -> returns last occurence of startIndex of specified substring str within given sequence
-    - 
+    - s.setCharAt(int index, char ch)
+    - s.setLength(int length)
+    - s.subsequence(int startIndex, int endIndex) -> returns CharSequence
+    - s.substring(int startIndex)
+    - s.substring(int startIndex, int endIndex)
+    - s.toString()
+    - s.trimToSize() -> attempts to reduce the storage for the char sequence 
 - Queue
 - Stack
 - Deque
