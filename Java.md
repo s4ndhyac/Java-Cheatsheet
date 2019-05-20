@@ -22,6 +22,7 @@ The complete Java cheatsheet
   - 
 - CharSequence
   - 
+- Comparator
 
 ### Boxed [Wrapper classes]
 - String
