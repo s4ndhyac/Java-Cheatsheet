@@ -7,25 +7,109 @@ The complete Java cheatsheet
 
 ### Base Classes 
 - Object
-  - clone
-  - equals
+  - toString
+  - clone()
+    - creates and returns a shallow copy
   - finalize
-  - getClass
-  - hashCode
+    - called just before an object is garbage collected
+    - called by Garbage Collector when it determines that there are no more references to it
+    - override finalize to perform cleanup, dispose system resources and minimize memory leaks
+    - Garbage Collector called by calling `System.gc()`
+    - the finalize method is called only once by the gc even though the object is eligible for gc multiple times
+  - getClass()
+    - return the class object of this class
+    - can also be used to get class metadata
+    - After loading a .class file JVM creates an object of type java.lang.class in the heap area. We can use this class object to get class level information. This is widely used in reflection.
+  - hashCode()
+    - for every object JVM generates a unique integer
+    - converts the internal address to an integer
+    - the function is native in JAVA
+    - overriding of hashCode() should return a unique int per object
+    - used in hashing datastructures
+  - obj.equals(obj)
+    - compares the 'this' object to the object on which the method was called
+    - recommended to override hashCode whenever equals is overriden because equal objects shouls have equal hashCodes
   - notify
+    - wakes up a single thread waiting on this object's monitor
   - notifyAll
+    - wakes up all threads that are waiting on this objects monitor
+  - wait
+    - causes the current thread to wait until either:
+      - another thread invokes the notify or notifyAll method
+      - a specified amount of time has elapsed
 
 ### Interfaces
+- Collection
+  - add(Element e)
+  - addAll(Collection c)
+  - clear()
+    - remove all elements from this collection, collection will be empty after this method returns
+  - contains(Object o)
+  - containsAll(Collection c)
+  - equals(Object o)
+  - hashCode()
+  - isEmpty()
+  - iterator()
+  - remove(Object o)
+  - removeAll(Collection c)
+  - retainAll(Collection c)
+    - retain only the elements in the Collection c, remove all elements not in the collection c
+  - size()
+  - toArray()
+  - toArray(T[] a)
+
+- Iterable
+
+- Comparable \
+The type of objects that this object may be compared to
+
 - Serializable
-  -
+
 - Appendable
-  - 
+
 - CharSequence
-  - 
-- Comparator
+
+- Queue
+  - FIFO
+  - is an interace and requires a concrete class for its declaration
+  - most commonly used are - PriorityQueue and LinkedList
+    - Both are not thread safe
+  - PriorityBlockingQueue, ArrayBlockingQueue, any BlockingQueue is thread-safe
+  - supports all methods of the Collection interface
+  - Deque supports insertion and removal at both ends
+  - Methods:
+    - add(obj) - throws exception if empty else returns boolean
+    - offer(obj) - returns boolean - null if failure
+    - peek() - returns null if no element
+    - element() - throws exception if empty  | similar to peek otherwise
+    - remove() - throws exception if empty
+    - poll() - returns null if no element
+    - size() - returns no. of elements in the queue
+
+
+### Functional Interface
+- Comparator \
+Interface used to order the objects of user-defined classes. 
+  - compare(Object obj1, Object obj2);
+  - equals(Object obj)
+  - usage: Collections.sort(List list, ComparatorClass c) where ComparatorClass implements the Comparator interface and includes definition for the compare method as needed
+  - comparing() - extracts sort key from template T, then compares based on it `Comparator<Person> lastName = Comparator.comparing(Person::lastName)` ||| \\\ly comparingInt, comparingDouble, comparingLong for different key types extracted from T 
+  - naturalOrder() - returns a comparator that compares comparable objects in natural order
+  - nullFirst() - Returns a null-friendly comparator that considers nulls to be less than non-nulls.
+  - nullsLast() - Returns a null-friendly comparator that considers null to be greater than non-null. 
+  - reversed() - returns a comparator that is in reverse order of this comparator
+  - reverseOrder() - returns a comparator that is in reverse order of the natural order
+  - thenComparing() - when `this` comparator results in equality, then `other` comparator is used - `Comparator<String> cmp = Comparator.comparingInt(String::length).thenComparing(String.CASE_INSENSITIVE_ORDER)` || \\\ly thenComparingInt, thenComparingDouble, thenComparingLong for different types of `other` comparator key
+
+- Iterator
 
 ### Boxed [Wrapper classes]
+- Character
+  - Character.isDigit(a)
 - String
+- Integer
+- Double
+- Long
 - StringBuilder
 - StringBuffer -> `final class StringBuffer extends Object implements Serializable, Appendable, CharSequence`
   - Constructor -> 
@@ -54,11 +138,45 @@ The complete Java cheatsheet
     - s.substring(int startIndex, int endIndex)
     - s.toString()
     - s.trimToSize() -> attempts to reduce the storage for the char sequence 
-- Queue
+
 - Stack
 - Deque
 - PriorityQueue
 - List
+- Set
+- Map
+- Map.Entry
+  - returns a collection view of this class - entrySet()
+  - only way to obtain a reference to a map entry is from the iterator of this collection view - iterator of entrySet
+  - equals - e1.getKey().equals(e2.getKey())
+  - hashCode - e.hashCode()
+  - getKey()
+  - getValue()
+  - setValue(value)
+  - comparingByKey 
+    - returns a comparator that compare entry in natural order on key
+    - comparingByKey(Comparator c) - compares entry on key given by comparator
+  - comparingByValue
+    - returns a comparator that compares in natural order on value
+    - comparingByValue(Comparator c) - compares entry on value given by comparator
+  ```
+  Map<Integer,Integer> m = new HashMap<>();
+  Set<Map.Entry<Integer,Integer>> s = m.entrySet();
+  for(Map.Entry<String, Integer> it: s)
+  {
+    System.out.println(it.getKey() + " " + it.getValue());
+  }
+  ```
+
+- Pair<K, V> extends java.lang.Object
+  - package -> javafx.util.Pair<K,V>
+  - getKey()
+  - getValue()
+  - hashCode()
+  - equals()
+  - toString()
+  - and all methods inherited from Object
+
 - Iterator
 
 
@@ -173,6 +291,10 @@ return x!=0 && ((x&(x-1)) == 0);
 - use Collections framework data structures
 
 - use wrapper class for radix conversions:
+
+- How to use array of lists
+
+- How to use list of arrays
 ```
 return Integer.toString(num, base);
 ```
@@ -182,6 +304,6 @@ return Integer.toString(num, base);
 ## Head-First Design Patterns in Java [Notes]
 
 
-## Java Interview Bootcamp
+## Java Interview Bootcamp [Notes]
 - 
 
