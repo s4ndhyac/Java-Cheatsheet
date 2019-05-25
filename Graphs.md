@@ -758,5 +758,9 @@ public boolean isPathExist_BFS(int [][] residualGraph, int src, int dest, int []
         }
   ```
 
+  ### Sources
+- https://medium.com/@codingfreak/graph-data-structure-interview-questions-and-practice-problems-22d5cd488855
+- https://www.hackerearth.com/practice/algorithms/graphs/articulation-points-and-bridges/tutorial/
+- https://algorithms.tutorialhorizon.com/
 
 
